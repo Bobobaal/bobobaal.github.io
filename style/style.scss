@@ -1,0 +1,63 @@
+@import "mixins";
+@import "variables";
+
+.panel-warning>.panel-heading {
+    color: $orange;
+}
+
+p {
+    margin: 0;
+}
+
+.table {
+    font-size: 14px;
+
+    >thead {
+        width: 100%;
+
+        >tr>th {
+            width: 25%;
+            padding: $padding;
+            font-weight: bold;
+        }
+    }
+
+    >tbody {
+        width: 100%;
+        border-bottom: 2px solid $colord;
+
+        &.seen>tr>td {
+            @include groen;
+        }
+
+        >tr {
+            &.seen>td {
+                @include groen;
+            }
+
+            border-left: 2px solid $colord;
+            border-right: 2px solid $colord;
+
+            >td {
+                padding: $padding;
+                font-weight: bold;
+                color: $red;
+
+                &.collapse.in {
+                    column-span: all;
+                }
+            }
+        }
+    }
+}
+
+.well {
+    width: 95%;
+    margin: auto;
+    border: 0px solid $colore3;
+}
+
+#collapse7 {
+    margin-left: 5px;
+    list-style: none;
+}

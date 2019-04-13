@@ -1,0 +1,62 @@
+.panel-warning > .panel-heading {
+  color: orange;
+}
+
+p {
+  margin: 0;
+}
+
+.table {
+  font-size: 14px;
+}
+
+.table > thead {
+  width: 100%;
+}
+
+.table > thead > tr > th {
+  width: 25%;
+  padding: 0 0 0 8;
+  font-weight: bold;
+}
+
+.table > tbody {
+  width: 100%;
+  border-bottom: 2px solid #DDD;
+}
+
+.table > tbody.seen > tr > td {
+  color: green !important;
+}
+
+.table > tbody > tr {
+  border-left: 2px solid #DDD;
+  border-right: 2px solid #DDD;
+}
+
+.table > tbody > tr.seen > td {
+  color: green !important;
+}
+
+.table > tbody > tr > td {
+  padding: 0 0 0 8;
+  font-weight: bold;
+  color: red;
+}
+
+.table > tbody > tr > td.collapse.in {
+  -webkit-column-span: all;
+          column-span: all;
+}
+
+.well {
+  width: 95%;
+  margin: auto;
+  border: 0px solid #e3e3e3;
+}
+
+#collapse7 {
+  margin-left: 5px;
+  list-style: none;
+}
+/*# sourceMappingURL=style.css.map */

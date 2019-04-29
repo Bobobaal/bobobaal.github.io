@@ -1,8 +1,3 @@
-/*
-TO DO:
-- Array of all collapses
-- Redo autoclasses little simplified in here when creating table row with DOM
-*/
 class Episode {
     constructor(showTitle, season, eNr, eTitle, seen) {
         this.showTitle = showTitle;
@@ -445,7 +440,10 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("Supergirl", 4, 9, "Elseworlds Part 3", true),
     new Episode("DC Legends Of Tomorrow", 4, 7, "Hell No, Dolly!", true),
     new Episode("DC Legends Of Tomorrow", 4, 8, "Legends Of To-Meow-Meow", true),
+    new Episode("DC Legends Of Tomorrow", 4, 9, "Lucha De Apuestas", false),
+    new Episode("DC Legends Of Tomorrow", 4, 10, "The Getaway", false),
     new Episode("The Flash", 5, 10, "The Flash & The Furious", true),
+    new Episode("DC Legends Of Tomorrow", 4, 11, "Séance And Sensibility", false),
     new Episode("Supergirl", 4, 10, "Suspicious Minds", true),
     new Episode("Arrow", 7, 10, "My Name Is Emiko Queen", true),
     new Episode("The Flash", 5, 11, "Seeing Red", true),
@@ -464,6 +462,7 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("Supergirl", 4, 14, "Stand And Deliver", false),
     new Episode("Supergirl", 4, 15, "O Brother, Where Art Thou?", false)
 ];
+console.log(collapse6);
 
 const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6];
 const collapsesSeen = [collapse1seen, collapse2seen, collapse3seen, collapse4seen, collapse5seen, collapse6seen];
@@ -511,6 +510,7 @@ function init() {
         }
 
         //Goes through every collapse and creates a single tr per episode and fills it in correctly
+        //Also checks if I have watched all episodes of the current season of the shows in that collapse and fills in the class correctly
         for (let episode of collapses[i - 1]) {
             const tr = document.createElement("tr");
             if (episode.showTitle === "Arrow") {
@@ -523,6 +523,7 @@ function init() {
                 tr.setAttribute("class", collapsesSeen[i-1] === false && episode.seen === true ? "seen info" : "info");
             }
 
+            //Create all 4 td's per tr and fill them in correctly according to the thead
             const tdShowTitle = document.createElement("td");
             const showTitleText = document.createTextNode(episode.showTitle);
             tdShowTitle.appendChild(showTitleText);
@@ -536,14 +537,19 @@ function init() {
             const titleText = document.createTextNode(episode.eTitle);
             tdTitle.appendChild(titleText);
 
+            //Append all td's in the tr
             tr.appendChild(tdShowTitle);
             tr.appendChild(tdSeasonNr);
             tr.appendChild(tdEpisodeNr);
             tr.appendChild(tdTitle);
 
+            //Append tr to the tbody
             tbody.appendChild(tr);
         }
+        //Append tbody to the table when all tr's of the current collapse has been made and appended
         table.appendChild(tbody);
+
+        //Appends the table in the collapse
         collapse.appendChild(table);
     }
 }

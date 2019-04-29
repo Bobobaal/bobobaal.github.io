@@ -1,4 +1,6 @@
 /*
+OLD FILE, NOT BEING USED
+
 Voegt de juiste class toe aan tr door de titels (1ste td in tr)
 te vergelijken die aangeduid zijn met class show
 const titles = document.getElementsByClassName("show");

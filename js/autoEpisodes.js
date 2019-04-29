@@ -503,9 +503,17 @@ function init() {
 
 
         const tbody = document.createElement("tbody");
-        //If all the episodes in a single collapse are seen it will give the tbody the class seen
+        //If all the episodes in a single collapse are seen it will give the tbody the class seen and
+        //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
         if (collapsesSeen[i - 1] === true) {
             tbody.setAttribute("class", "seen");
+            collapse.parentElement.setAttribute("class", "panel panel-success");
+        //If not all episodes are seen but I've seen some the div to open the collapse will get the classes panel and panel-warning -> marks that I'm watching it
+        } else if (collapsesSeen[i - 1] === false && collapses[i - 1].reduce((result, episode) => result || episode.seen, false)) {
+            collapse.parentElement.setAttribute("class", "panel panel-warning");
+        //Div to open the collapse will get classes panel and panel-danger when I haven't seen any episode in that collapse
+        } else{
+            collapse.parentElement.setAttribute("class", "panel panel-danger");
         }
 
         //Goes through every collapse and creates a single tr per episode and fills it in correctly
@@ -513,13 +521,13 @@ function init() {
         for (let episode of collapses[i - 1]) {
             const tr = document.createElement("tr");
             if (episode.showTitle === "Arrow") {
-                tr.setAttribute("class", collapsesSeen[i-1] === false && episode.seen === true ? "seen success" : "success");
+                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen success" : "success");
             } else if (episode.showTitle === "The Flash") {
-                tr.setAttribute("class", collapsesSeen[i-1] === false && episode.seen === true ? "seen warning" : "warning");
+                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen warning" : "warning");
             } else if (episode.showTitle === "Supergirl") {
-                tr.setAttribute("class", collapsesSeen[i-1] === false && episode.seen === true ? "seen danger" : "danger");
+                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen danger" : "danger");
             } else {
-                tr.setAttribute("class", collapsesSeen[i-1] === false && episode.seen === true ? "seen info" : "info");
+                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen info" : "info");
             }
 
             //Create all 4 td's per tr and fill them in correctly according to the thead

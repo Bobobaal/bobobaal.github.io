@@ -464,3 +464,88 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("Supergirl", 4, 14, "Stand And Deliver", false),
     new Episode("Supergirl", 4, 15, "O Brother, Where Art Thou?", false)
 ];
+
+const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6];
+const collapsesSeen = [collapse1seen, collapse2seen, collapse3seen, collapse4seen, collapse5seen, collapse6seen];
+
+function init() {
+    for (let i = 1; i <= collapses.length; i++) {
+        //Selecting collapse
+        const collapse = document.getElementById(`collapse${i}`);
+        //Create table element
+        const table = document.createElement("table");
+        //Add classes to table element
+        table.setAttribute("class", "table table-hover");
+        //Create thead element
+        const thead = document.createElement("thead");
+        //Create tr element for in thead
+        const trhead = document.createElement("tr");
+        //Create multiple th elements with their respect text for in tr element
+        const thHead1 = document.createElement("th");
+        const thHead1Text = document.createTextNode("Show");
+        thHead1.appendChild(thHead1Text);
+        const thHead2 = document.createElement("th");
+        const thHead2Text = document.createTextNode("Season #");
+        thHead2.appendChild(thHead2Text);
+        const thHead3 = document.createElement("th");
+        const thHead3Text = document.createTextNode("Episode #");
+        thHead3.appendChild(thHead3Text);
+        const thHead4 = document.createElement("th");
+        const thHead4Text = document.createTextNode("Title");
+        thHead4.appendChild(thHead4Text);
+        //Append th elements to tr
+        trhead.appendChild(thHead1);
+        trhead.appendChild(thHead2);
+        trhead.appendChild(thHead3);
+        trhead.appendChild(thHead4);
+        //Append tr to thead
+        thead.appendChild(trhead);
+        //Append thead to table
+        table.appendChild(thead);
+
+
+        const tbody = document.createElement("tbody");
+        //If all the episodes in a single collapse are seen it will give the tbody the class seen
+        if (collapsesSeen[i - 1] === true) {
+            tbody.setAttribute("class", "seen");
+        }
+
+        //Goes through every collapse and creates a single tr per episode and fills it in correctly
+        for (let episode of collapses[i - 1]) {
+            const tr = document.createElement("tr");
+            if (episode.showTitle === "Arrow") {
+                tr.setAttribute("class", collapsesSeen[i-1] === false && episode.seen === true ? "seen success" : "success");
+            } else if (episode.showTitle === "The Flash") {
+                tr.setAttribute("class", collapsesSeen[i-1] === false && episode.seen === true ? "seen warning" : "warning");
+            } else if (episode.showTitle === "Supergirl") {
+                tr.setAttribute("class", collapsesSeen[i-1] === false && episode.seen === true ? "seen danger" : "danger");
+            } else {
+                tr.setAttribute("class", collapsesSeen[i-1] === false && episode.seen === true ? "seen info" : "info");
+            }
+
+            const tdShowTitle = document.createElement("td");
+            const showTitleText = document.createTextNode(episode.showTitle);
+            tdShowTitle.appendChild(showTitleText);
+            const tdSeasonNr = document.createElement("td");
+            const seasonNrText = document.createTextNode(episode.season);
+            tdSeasonNr.appendChild(seasonNrText);
+            const tdEpisodeNr = document.createElement("td");
+            const eNrText = document.createTextNode(episode.eNr);
+            tdEpisodeNr.appendChild(eNrText);
+            const tdTitle = document.createElement("td");
+            const titleText = document.createTextNode(episode.eTitle);
+            tdTitle.appendChild(titleText);
+
+            tr.appendChild(tdShowTitle);
+            tr.appendChild(tdSeasonNr);
+            tr.appendChild(tdEpisodeNr);
+            tr.appendChild(tdTitle);
+
+            tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+        collapse.appendChild(table);
+    }
+}
+
+window.onload = init;

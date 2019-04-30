@@ -449,11 +449,11 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("The Flash", 5, 11, "Seeing Red", true),
     new Episode("Supergirl", 4, 11, "Blood Memory", true),
     new Episode("Arrow", 7, 11, "Past Sins", true),
-    new Episode("The Flash", 5, 12, "Memorabilia", false),
-    new Episode("Arrow", 7, 12, "Emerald Archer", false),
-    new Episode("Arrow", 7, 13, "Star City Slayer", false),
-    new Episode("The Flash", 5, 13, "Goldfaced", false),
-    new Episode("The Flash", 5, 14, "Cause And XS", false),
+    new Episode("The Flash", 5, 12, "Memorabilia", true),
+    new Episode("Arrow", 7, 12, "Emerald Archer", true),
+    new Episode("Arrow", 7, 13, "Star City Slayer", true),
+    new Episode("The Flash", 5, 13, "Goldfaced", true),
+    new Episode("The Flash", 5, 14, "Cause And XS", true),
     new Episode("Supergirl", 4, 12, "Menagerie", false),
     new Episode("Supergirl", 4, 13, "What's So Funny About Truth, Justice, And The American Way?", false),
     new Episode("Arrow", 7, 14, "Brothers & Sisters", false),
@@ -508,11 +508,11 @@ function init() {
         if (collapsesSeen[i - 1] === true) {
             tbody.setAttribute("class", "seen");
             collapse.parentElement.setAttribute("class", "panel panel-success");
-        //If not all episodes are seen but I've seen some the div to open the collapse will get the classes panel and panel-warning -> marks that I'm watching it
+            //If not all episodes are seen but I've seen some the div to open the collapse will get the classes panel and panel-warning -> marks that I'm watching it
         } else if (collapsesSeen[i - 1] === false && collapses[i - 1].reduce((result, episode) => result || episode.seen, false)) {
             collapse.parentElement.setAttribute("class", "panel panel-warning");
-        //Div to open the collapse will get classes panel and panel-danger when I haven't seen any episode in that collapse
-        } else{
+            //Div to open the collapse will get classes panel and panel-danger when I haven't seen any episode in that collapse
+        } else {
             collapse.parentElement.setAttribute("class", "panel panel-danger");
         }
 

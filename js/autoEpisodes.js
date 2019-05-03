@@ -466,8 +466,6 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("The Flash", 7, 16, "Failure Is An Orphan", false)
 ];
 
-console.log(collapse6);
-
 const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6];
 const collapsesSeen = [collapse1seen, collapse2seen, collapse3seen, collapse4seen, collapse5seen, collapse6seen];
 

@@ -445,6 +445,7 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("The Flash", 5, 10, "The Flash & The Furious", true),
     new Episode("DC Legends Of Tomorrow", 4, 11, "Séance And Sensibility", true),
     new Episode("Supergirl", 4, 10, "Suspicious Minds", true),
+    new Episode("DC Legends Of Tomorrow", 4, 12, "The Eggplant, the Witch & the Wardrobe ", false),
     new Episode("Arrow", 7, 10, "My Name Is Emiko Queen", true),
     new Episode("The Flash", 5, 11, "Seeing Red", true),
     new Episode("Supergirl", 4, 11, "Blood Memory", true),
@@ -461,8 +462,11 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("Supergirl", 4, 14, "Stand And Deliver", false),
     new Episode("Supergirl", 4, 15, "O Brother, Where Art Thou?", false),
     new Episode("Arrow", 7, 15, "Training Day", false),
+    new Episode("Arrow", 7, 16, "Star City 2040", false),
     new Episode("The Flash", 7, 16, "Failure Is An Orphan", false)
 ];
+
+console.log(collapse6);
 
 const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6];
 const collapsesSeen = [collapse1seen, collapse2seen, collapse3seen, collapse4seen, collapse5seen, collapse6seen];

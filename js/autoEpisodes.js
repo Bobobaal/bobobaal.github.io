@@ -461,9 +461,15 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("The Flash", 5, 15, "King Shark Vs. Gorilla Grodd", false),
     new Episode("Supergirl", 4, 14, "Stand And Deliver", false),
     new Episode("Supergirl", 4, 15, "O Brother, Where Art Thou?", false),
+    new Episode("Supergirl", 4, 16, "The House of L", false),
+    new Episode("Supergirl", 4, 17, "All About Eve", false),
     new Episode("Arrow", 7, 15, "Training Day", false),
     new Episode("Arrow", 7, 16, "Star City 2040", false),
-    new Episode("The Flash", 7, 16, "Failure Is An Orphan", false)
+    new Episode("The Flash", 7, 16, "Failure Is An Orphan", false),
+    new Episode("The Flash", 7, 17, "Time Bomb", false),
+    new Episode("The Flash", 7, 18, "Godspeed", false),
+    new Episode("Arrow", 7, 17, "Inheritance", false),
+    new Episode("Arrow", 7, 18, "Lost Canary", false)
 ];
 
 const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6];

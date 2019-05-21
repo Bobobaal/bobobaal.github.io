@@ -448,6 +448,7 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("DC Legends Of Tomorrow", 4, 12, "The Eggplant, The Witch & The Wardrobe", true),
     new Episode("Arrow", 7, 10, "My Name Is Emiko Queen", true),
     new Episode("DC Legends Of Tomorrow", 4, 13, "Egg MacGuffin", false),
+    new Episode("DC Legends Of Tomorrow", 4, 14, "Nip/Stuck", false),
     new Episode("The Flash", 5, 11, "Seeing Red", true),
     new Episode("Supergirl", 4, 11, "Blood Memory", true),
     new Episode("Arrow", 7, 11, "Past Sins", true),
@@ -468,13 +469,19 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("Arrow", 7, 15, "Training Day", false),
     new Episode("Arrow", 7, 16, "Star City 2040", false),
     new Episode("Supergirl", 4, 19, "American Dreamer", false),
+    new Episode("Supergirl", 4, 20, "Will The Real Miss Tessmacher Please Stand Up?", false),
+    new Episode("Supergirl", 4, 21, "Red Dawn", false),
     new Episode("The Flash", 5, 16, "Failure Is An Orphan", false),
     new Episode("The Flash", 5, 17, "Time Bomb", false),
     new Episode("The Flash", 5, 18, "Godspeed", false),
     new Episode("The Flash", 5, 19, "Snow Pack", false),
     new Episode("Arrow", 7, 17, "Inheritance", false),
+    new Episode("The Flash", 5, 20, "Gone Rogue", false),
+    new Episode("The Flash", 5, 21, "The Girl With The Red Lightning", false),
     new Episode("Arrow", 7, 18, "Lost Canary", false),
-    new Episode("Arrow", 7, 19, "Spartan", false)
+    new Episode("Arrow", 7, 19, "Spartan", false),
+    new Episode("Arrow", 7, 20, "Confessions", false),
+    new Episode("Arrow", 7, 21, "Living Proof", false)
 ];
 
 const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6];

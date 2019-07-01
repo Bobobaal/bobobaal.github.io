@@ -43,6 +43,102 @@ class Episode {
     }
 }
 
+class TableCreater {
+    constructor(collapse) {
+        this.collapse = collapse;
+    }
+
+    set collapse(value) {
+        this._collapse = value;
+    }
+
+    createHeader() {
+        const thead = document.createElement("thead");
+        //Create tr element for in thead
+        const trhead = document.createElement("tr");
+        //Create multiple th elements with their respect text for in tr element
+        const thHead1 = document.createElement("th");
+        const thHead1Text = document.createTextNode("Show");
+        thHead1.appendChild(thHead1Text);
+        const thHead2 = document.createElement("th");
+        const thHead2Text = document.createTextNode("Season #");
+        thHead2.appendChild(thHead2Text);
+        const thHead3 = document.createElement("th");
+        const thHead3Text = document.createTextNode("Episode #");
+        thHead3.appendChild(thHead3Text);
+        const thHead4 = document.createElement("th");
+        const thHead4Text = document.createTextNode("Title");
+        thHead4.appendChild(thHead4Text);
+        //Append th elements to tr
+        trhead.appendChild(thHead1);
+        trhead.appendChild(thHead2);
+        trhead.appendChild(thHead3);
+        trhead.appendChild(thHead4);
+        //Append tr to thead
+        thead.appendChild(trhead);
+        return thead;
+    }
+
+    createBody(i, table) {
+        const tbody = document.createElement("tbody");
+        //If all the episodes in a single collapse are seen it will give the tbody the class seen and
+        //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
+        if (collapsesSeen[i - 1] === true) {
+            tbody.setAttribute("class", "seen");
+            this._collapse.parentElement.setAttribute("class", "panel panel-success");
+            //If not all episodes are seen but I've seen some the div to open the collapse will get the classes panel and panel-warning -> marks that I'm watching it
+        } else if (collapsesSeen[i - 1] === false && collapses[i - 1].reduce((result, episode) => result || episode.seen, false)) {
+            this._collapse.parentElement.setAttribute("class", "panel panel-warning");
+            //Div to open the collapse will get classes panel and panel-danger when I haven't seen any episode in that collapse
+        } else {
+            this._collapse.parentElement.setAttribute("class", "panel panel-danger");
+        }
+
+        //Goes through every collapse and creates a single tr per episode and fills it in correctly
+        //Also checks if I have watched all episodes of the current season of the shows in that collapse and fills in the class correctly
+        for (let episode of collapses[i - 1]) {
+            const tr = document.createElement("tr");
+            if (episode.showTitle === "Arrow") {
+                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen success" : "success");
+            } else if (episode.showTitle === "The Flash") {
+                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen warning" : "warning");
+            } else if (episode.showTitle === "Supergirl") {
+                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen danger" : "danger");
+            } else {
+                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen info" : "info");
+            }
+
+            //Create all 4 td's per tr and fill them in correctly according to the thead
+            const tdShowTitle = document.createElement("td");
+            const showTitleText = document.createTextNode(episode.showTitle);
+            tdShowTitle.appendChild(showTitleText);
+            const tdSeasonNr = document.createElement("td");
+            const seasonNrText = document.createTextNode(episode.season);
+            tdSeasonNr.appendChild(seasonNrText);
+            const tdEpisodeNr = document.createElement("td");
+            const eNrText = document.createTextNode(episode.eNr);
+            tdEpisodeNr.appendChild(eNrText);
+            const tdTitle = document.createElement("td");
+            const titleText = document.createTextNode(episode.eTitle);
+            tdTitle.appendChild(titleText);
+
+            //Append all td's in the tr
+            tr.appendChild(tdShowTitle);
+            tr.appendChild(tdSeasonNr);
+            tr.appendChild(tdEpisodeNr);
+            tr.appendChild(tdTitle);
+
+            //Append tr to the tbody
+            tbody.appendChild(tr);
+        }
+        //Append tbody to the table when all tr's of the current collapse has been made and appended
+        table.appendChild(tbody);
+
+        //Appends the table in the collapse
+        this._collapse.appendChild(table);
+    }
+}
+
 const collapse1seen = true;
 const collapse1 = [new Episode("Arrow", 1, 1, "Pilot", true),
     new Episode("Arrow", 1, 2, "Honor Thy Father", true),
@@ -494,96 +590,15 @@ const collapsesSeen = [collapse1seen, collapse2seen, collapse3seen, collapse4see
 
 function init() {
     for (let i = 1; i <= collapses.length; i++) {
-        //Selecting collapse
-        const collapse = document.getElementById(`collapse${i}`);
+        const creater = new TableCreater(document.getElementById(`collapse${i}`));
         //Create table element
         const table = document.createElement("table");
         //Add classes to table element
         table.setAttribute("class", "table table-hover");
         //Create thead element
-        const thead = document.createElement("thead");
-        //Create tr element for in thead
-        const trhead = document.createElement("tr");
-        //Create multiple th elements with their respect text for in tr element
-        const thHead1 = document.createElement("th");
-        const thHead1Text = document.createTextNode("Show");
-        thHead1.appendChild(thHead1Text);
-        const thHead2 = document.createElement("th");
-        const thHead2Text = document.createTextNode("Season #");
-        thHead2.appendChild(thHead2Text);
-        const thHead3 = document.createElement("th");
-        const thHead3Text = document.createTextNode("Episode #");
-        thHead3.appendChild(thHead3Text);
-        const thHead4 = document.createElement("th");
-        const thHead4Text = document.createTextNode("Title");
-        thHead4.appendChild(thHead4Text);
-        //Append th elements to tr
-        trhead.appendChild(thHead1);
-        trhead.appendChild(thHead2);
-        trhead.appendChild(thHead3);
-        trhead.appendChild(thHead4);
-        //Append tr to thead
-        thead.appendChild(trhead);
-        //Append thead to table
-        table.appendChild(thead);
-
-
-        const tbody = document.createElement("tbody");
-        //If all the episodes in a single collapse are seen it will give the tbody the class seen and
-        //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
-        if (collapsesSeen[i - 1] === true) {
-            tbody.setAttribute("class", "seen");
-            collapse.parentElement.setAttribute("class", "panel panel-success");
-            //If not all episodes are seen but I've seen some the div to open the collapse will get the classes panel and panel-warning -> marks that I'm watching it
-        } else if (collapsesSeen[i - 1] === false && collapses[i - 1].reduce((result, episode) => result || episode.seen, false)) {
-            collapse.parentElement.setAttribute("class", "panel panel-warning");
-            //Div to open the collapse will get classes panel and panel-danger when I haven't seen any episode in that collapse
-        } else {
-            collapse.parentElement.setAttribute("class", "panel panel-danger");
-        }
-
-        //Goes through every collapse and creates a single tr per episode and fills it in correctly
-        //Also checks if I have watched all episodes of the current season of the shows in that collapse and fills in the class correctly
-        for (let episode of collapses[i - 1]) {
-            const tr = document.createElement("tr");
-            if (episode.showTitle === "Arrow") {
-                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen success" : "success");
-            } else if (episode.showTitle === "The Flash") {
-                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen warning" : "warning");
-            } else if (episode.showTitle === "Supergirl") {
-                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen danger" : "danger");
-            } else {
-                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen info" : "info");
-            }
-
-            //Create all 4 td's per tr and fill them in correctly according to the thead
-            const tdShowTitle = document.createElement("td");
-            const showTitleText = document.createTextNode(episode.showTitle);
-            tdShowTitle.appendChild(showTitleText);
-            const tdSeasonNr = document.createElement("td");
-            const seasonNrText = document.createTextNode(episode.season);
-            tdSeasonNr.appendChild(seasonNrText);
-            const tdEpisodeNr = document.createElement("td");
-            const eNrText = document.createTextNode(episode.eNr);
-            tdEpisodeNr.appendChild(eNrText);
-            const tdTitle = document.createElement("td");
-            const titleText = document.createTextNode(episode.eTitle);
-            tdTitle.appendChild(titleText);
-
-            //Append all td's in the tr
-            tr.appendChild(tdShowTitle);
-            tr.appendChild(tdSeasonNr);
-            tr.appendChild(tdEpisodeNr);
-            tr.appendChild(tdTitle);
-
-            //Append tr to the tbody
-            tbody.appendChild(tr);
-        }
-        //Append tbody to the table when all tr's of the current collapse has been made and appended
-        table.appendChild(tbody);
-
-        //Appends the table in the collapse
-        collapse.appendChild(table);
+        table.appendChild(creater.createHeader());
+        //Create tbody element
+        creater.createBody(i, table);
     }
 }
 

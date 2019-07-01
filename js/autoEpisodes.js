@@ -52,7 +52,7 @@ class TableCreater {
         this._collapse = value;
     }
 
-    createHeader() {
+    createHeader(table) {
         const thead = document.createElement("thead");
         //Create tr element for in thead
         const trhead = document.createElement("tr");
@@ -76,7 +76,8 @@ class TableCreater {
         trhead.appendChild(thHead4);
         //Append tr to thead
         thead.appendChild(trhead);
-        return thead;
+        //Append thead to table
+        table.appendChild(thead);
     }
 
     createBody(i, table) {
@@ -596,7 +597,7 @@ function init() {
         //Add classes to table element
         table.setAttribute("class", "table table-hover");
         //Create thead element
-        table.appendChild(creater.createHeader());
+        creater.createHeader(table);
         //Create tbody element
         creater.createBody(i, table);
     }

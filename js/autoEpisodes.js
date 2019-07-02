@@ -88,6 +88,19 @@ class TableCreater {
 
     createBody(i) {
         const tbody = document.createElement("tbody");
+
+        this.colorCollapse(i, tbody);
+
+        this.fillTable(i, tbody);
+
+        //Append tbody to the table when all tr's of the current collapse has been made and appended
+        this._table.appendChild(tbody);
+
+        //Appends the table in the collapse
+        this._collapse.appendChild(this._table);
+    }
+
+    colorCollapse(i, tbody) {
         //If all the episodes in a single collapse are seen it will give the tbody the class seen and
         //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
         if (collapsesSeen[i - 1] === true) {
@@ -100,7 +113,9 @@ class TableCreater {
         } else {
             this._collapse.parentElement.setAttribute("class", "panel panel-danger");
         }
+    }
 
+    fillTable(i, tbody) {
         //Goes through every collapse and creates a single tr per episode and fills it in correctly
         //Also checks if I have watched all episodes of the current season of the shows in that collapse and fills in the class correctly
         for (let episode of collapses[i - 1]) {
@@ -138,11 +153,6 @@ class TableCreater {
             //Append tr to the tbody
             tbody.appendChild(tr);
         }
-        //Append tbody to the table when all tr's of the current collapse has been made and appended
-        this._table.appendChild(tbody);
-
-        //Appends the table in the collapse
-        this._collapse.appendChild(this._table);
     }
 }
 

@@ -44,15 +44,21 @@ class Episode {
 }
 
 class TableCreater {
-    constructor(collapse) {
+    constructor(collapse, table) {
         this.collapse = collapse;
+        this.table = table;
+        this._table.setAttribute("class", "table table-hover")
+    }
+
+    set table(value) {
+        this._table = value;
     }
 
     set collapse(value) {
         this._collapse = value;
     }
 
-    createHeader(table) {
+    createHeader() {
         const thead = document.createElement("thead");
         //Create tr element for in thead
         const trhead = document.createElement("tr");
@@ -77,10 +83,10 @@ class TableCreater {
         //Append tr to thead
         thead.appendChild(trhead);
         //Append thead to table
-        table.appendChild(thead);
+        this._table.appendChild(thead);
     }
 
-    createBody(i, table) {
+    createBody(i) {
         const tbody = document.createElement("tbody");
         //If all the episodes in a single collapse are seen it will give the tbody the class seen and
         //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
@@ -133,10 +139,10 @@ class TableCreater {
             tbody.appendChild(tr);
         }
         //Append tbody to the table when all tr's of the current collapse has been made and appended
-        table.appendChild(tbody);
+        this._table.appendChild(tbody);
 
         //Appends the table in the collapse
-        this._collapse.appendChild(table);
+        this._collapse.appendChild(this._table);
     }
 }
 
@@ -591,15 +597,12 @@ const collapsesSeen = [collapse1seen, collapse2seen, collapse3seen, collapse4see
 
 function init() {
     for (let i = 1; i <= collapses.length; i++) {
-        const creater = new TableCreater(document.getElementById(`collapse${i}`));
-        //Create table element
-        const table = document.createElement("table");
-        //Add classes to table element
-        table.setAttribute("class", "table table-hover");
+        //Create the creater
+        const creater = new TableCreater(document.getElementById(`collapse${i}`), document.createElement("table"));
         //Create thead element
-        creater.createHeader(table);
+        creater.createHeader();
         //Create tbody element
-        creater.createBody(i, table);
+        creater.createBody(i);
     }
 }
 

@@ -612,8 +612,21 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("Arrow", 7, 22, "You Have Saved This City", false)
 ];
 
-const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6];
-const collapsesSeen = [collapse1seen, collapse2seen, collapse3seen, collapse4seen, collapse5seen, collapse6seen];
+const collapse7seen = false;
+const collapse7 = [new Episode("Arrow", 8, 1, "NA", false),
+    new Episode("Arrow", 8, 2, "NA", false),
+    new Episode("Arrow", 8, 3, "NA", false),
+    new Episode("Arrow", 8, 4, "NA", false),
+    new Episode("Arrow", 8, 5, "NA", false),
+    new Episode("Arrow", 8, 6, "NA", false),
+    new Episode("Arrow", 8, 7, "NA", false),
+    new Episode("Arrow", 8, 8, "NA", false),
+    new Episode("Arrow", 8, 9, "NA", false),
+    new Episode("Arrow", 8, 10, "NA", false)
+];
+
+const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6, collapse7];
+const collapsesSeen = [collapse1seen, collapse2seen, collapse3seen, collapse4seen, collapse5seen, collapse6seen, collapse7seen];
 
 function init() {
     for (let i = 1; i <= collapses.length; i++) {

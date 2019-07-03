@@ -125,7 +125,7 @@ class TableCreater {
         }
     }
 
-    fillTable(i, tbody) {
+    fillTable(i) {
         //Goes through every collapse and creates a single tr per episode and fills it in correctly
         //Also checks if I have watched all episodes of the current season of the shows in that collapse and fills in the class correctly
         for (let episode of collapses[i - 1]) {

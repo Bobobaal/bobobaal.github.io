@@ -613,16 +613,16 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
 ];
 
 const collapse7seen = false;
-const collapse7 = [new Episode("Arrow", 8, 1, "NA", false),
-    new Episode("Arrow", 8, 2, "NA", false),
-    new Episode("Arrow", 8, 3, "NA", false),
-    new Episode("Arrow", 8, 4, "NA", false),
-    new Episode("Arrow", 8, 5, "NA", false),
-    new Episode("Arrow", 8, 6, "NA", false),
-    new Episode("Arrow", 8, 7, "NA", false),
-    new Episode("Arrow", 8, 8, "NA", false),
-    new Episode("Arrow", 8, 9, "NA", false),
-    new Episode("Arrow", 8, 10, "NA", false)
+const collapse7 = [new Episode("Arrow", 8, 1, "N/A", false),
+    new Episode("Arrow", 8, 2, "N/A", false),
+    new Episode("Arrow", 8, 3, "N/A", false),
+    new Episode("Arrow", 8, 4, "N/A", false),
+    new Episode("Arrow", 8, 5, "N/A", false),
+    new Episode("Arrow", 8, 6, "N/A", false),
+    new Episode("Arrow", 8, 7, "N/A", false),
+    new Episode("Arrow", 8, 8, "N/A", false),
+    new Episode("Arrow", 8, 9, "N/A", false),
+    new Episode("Arrow", 8, 10, "N/A", false)
 ];
 
 const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6, collapse7];

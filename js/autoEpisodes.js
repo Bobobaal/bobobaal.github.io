@@ -115,7 +115,7 @@ class TableCreater {
         this._collapse.appendChild(this._table);
     }
 
-    colorCollapse(i) {
+    colorCollapse() {
         //If all the episodes in a single collapse are seen it will give the tbody the class seen and
         //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
         if (collapsesSeen[this._iterator - 1] === true) {
@@ -130,7 +130,7 @@ class TableCreater {
         }
     }
 
-    fillTable(i) {
+    fillTable() {
         //Goes through every collapse and creates a single tr per episode and fills it in correctly
         //Also checks if I have watched all episodes of the current season of the shows in that collapse and fills in the class correctly
         for (let episode of collapses[this._iterator - 1]) {

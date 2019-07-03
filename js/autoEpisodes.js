@@ -47,21 +47,33 @@ class TableCreater {
     constructor(collapse, table) {
         this.collapse = collapse;
         this.table = table;
-        this._table.setAttribute("class", "table table-hover")
-    }
-
-    set table(value) {
-        this._table = value;
+        this._table.setAttribute("class", "table table-hover");
+        this.thead = document.createElement("thead");
+        this.trhead = document.createElement("tr");
+        this.tbody = document.createElement("tbody");
     }
 
     set collapse(value) {
         this._collapse = value;
     }
 
+    set table(value) {
+        this._table = value;
+    }
+
+    set thead(value) {
+        this._thead = value;
+    }
+
+    set trhead(value) {
+        this._trhead = value;
+    }
+
+    set tbody(value) {
+        this._tbody = value;
+    }
+
     createHeader() {
-        const thead = document.createElement("thead");
-        //Create tr element for in thead
-        const trhead = document.createElement("tr");
         //Create multiple th elements with their respect text for in tr element
         const thHead1 = document.createElement("th");
         const thHead1Text = document.createTextNode("Show");
@@ -76,35 +88,33 @@ class TableCreater {
         const thHead4Text = document.createTextNode("Title");
         thHead4.appendChild(thHead4Text);
         //Append th elements to tr
-        trhead.appendChild(thHead1);
-        trhead.appendChild(thHead2);
-        trhead.appendChild(thHead3);
-        trhead.appendChild(thHead4);
+        this._trhead.appendChild(thHead1);
+        this._trhead.appendChild(thHead2);
+        this._trhead.appendChild(thHead3);
+        this._trhead.appendChild(thHead4);
         //Append tr to thead
-        thead.appendChild(trhead);
+        this._thead.appendChild(this._trhead);
         //Append thead to table
-        this._table.appendChild(thead);
+        this._table.appendChild(this._thead);
     }
 
     createBody(i) {
-        const tbody = document.createElement("tbody");
+        this.colorCollapse(i);
 
-        this.colorCollapse(i, tbody);
-
-        this.fillTable(i, tbody);
+        this.fillTable(i);
 
         //Append tbody to the table when all tr's of the current collapse has been made and appended
-        this._table.appendChild(tbody);
+        this._table.appendChild(this._tbody);
 
         //Appends the table in the collapse
         this._collapse.appendChild(this._table);
     }
 
-    colorCollapse(i, tbody) {
+    colorCollapse(i) {
         //If all the episodes in a single collapse are seen it will give the tbody the class seen and
         //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
         if (collapsesSeen[i - 1] === true) {
-            tbody.setAttribute("class", "seen");
+            this._tbody.setAttribute("class", "seen");
             this._collapse.parentElement.setAttribute("class", "panel panel-success");
             //If not all episodes are seen but I've seen some the div to open the collapse will get the classes panel and panel-warning -> marks that I'm watching it
         } else if (collapsesSeen[i - 1] === false && collapses[i - 1].reduce((result, episode) => result || episode.seen, false)) {
@@ -151,7 +161,7 @@ class TableCreater {
             tr.appendChild(tdTitle);
 
             //Append tr to the tbody
-            tbody.appendChild(tr);
+            this._tbody.appendChild(tr);
         }
     }
 }

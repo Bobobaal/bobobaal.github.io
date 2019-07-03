@@ -44,9 +44,10 @@ class Episode {
 }
 
 class TableCreater {
-    constructor(collapse, table) {
+    constructor(collapse, table, iterator) {
         this.collapse = collapse;
         this.table = table;
+        this.iterator = iterator;
         this._table.setAttribute("class", "table table-hover");
         this.thead = document.createElement("thead");
         this.trhead = document.createElement("tr");
@@ -59,6 +60,10 @@ class TableCreater {
 
     set table(value) {
         this._table = value;
+    }
+
+    set iterator(value) {
+        this._iterator = value;
     }
 
     set thead(value) {
@@ -98,10 +103,10 @@ class TableCreater {
         this._table.appendChild(this._thead);
     }
 
-    createBody(i) {
-        this.colorCollapse(i);
+    createBody() {
+        this.colorCollapse();
 
-        this.fillTable(i);
+        this.fillTable();
 
         //Append tbody to the table when all tr's of the current collapse has been made and appended
         this._table.appendChild(this._tbody);
@@ -113,11 +118,11 @@ class TableCreater {
     colorCollapse(i) {
         //If all the episodes in a single collapse are seen it will give the tbody the class seen and
         //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
-        if (collapsesSeen[i - 1] === true) {
+        if (collapsesSeen[this._iterator - 1] === true) {
             this._tbody.setAttribute("class", "seen");
             this._collapse.parentElement.setAttribute("class", "panel panel-success");
             //If not all episodes are seen but I've seen some the div to open the collapse will get the classes panel and panel-warning -> marks that I'm watching it
-        } else if (collapsesSeen[i - 1] === false && collapses[i - 1].reduce((result, episode) => result || episode.seen, false)) {
+        } else if (collapsesSeen[this._iterator - 1] === false && collapses[this._iterator - 1].reduce((result, episode) => result || episode.seen, false)) {
             this._collapse.parentElement.setAttribute("class", "panel panel-warning");
             //Div to open the collapse will get classes panel and panel-danger when I haven't seen any episode in that collapse
         } else {
@@ -128,16 +133,16 @@ class TableCreater {
     fillTable(i) {
         //Goes through every collapse and creates a single tr per episode and fills it in correctly
         //Also checks if I have watched all episodes of the current season of the shows in that collapse and fills in the class correctly
-        for (let episode of collapses[i - 1]) {
+        for (let episode of collapses[this._iterator - 1]) {
             const tr = document.createElement("tr");
-            if (episode.showTitle === "Arrow") {
-                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen success" : "success");
-            } else if (episode.showTitle === "The Flash") {
-                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen warning" : "warning");
-            } else if (episode.showTitle === "Supergirl") {
-                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen danger" : "danger");
+            if (episode.showTitle.toLowerCase() === "arrow") {
+                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen success" : "success");
+            } else if (episode.showTitle.toLowerCase() === "the flash") {
+                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen warning" : "warning");
+            } else if (episode.showTitle.toLowerCase() === "supergirl") {
+                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen danger" : "danger");
             } else {
-                tr.setAttribute("class", collapsesSeen[i - 1] === false && episode.seen === true ? "seen info" : "info");
+                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen info" : "info");
             }
 
             //Create all 4 td's per tr and fill them in correctly according to the thead
@@ -236,7 +241,7 @@ const collapse2 = [new Episode("Arrow", 3, 1, "The Calm", true),
     new Episode("Arrow", 3, 9, "The Climb", true),
     new Episode("The Flash", 1, 10, "Revenge Of The Rogues", true),
     new Episode("Arrow", 3, 10, "Left Behind", true),
-    new Episode("THe Flash", 1, 11, "The Sounds And The Fury", true),
+    new Episode("The Flash", 1, 11, "The Sounds And The Fury", true),
     new Episode("Arrow", 3, 11, "Midnight City", true),
     new Episode("The Flash", 1, 12, "Crazy For You", true),
     new Episode("Arrow", 3, 12, "Uprising", true),
@@ -629,13 +634,13 @@ const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collap
 const collapsesSeen = [collapse1seen, collapse2seen, collapse3seen, collapse4seen, collapse5seen, collapse6seen, collapse7seen];
 
 function init() {
-    for (let i = 1; i <= collapses.length; i++) {
+    for (let iterator = 1; iterator <= collapses.length; iterator++) {
         //Create the creater
-        const creater = new TableCreater(document.getElementById(`collapse${i}`), document.createElement("table"));
+        const creater = new TableCreater(document.getElementById(`collapse${iterator}`), document.createElement("table"), iterator);
         //Create thead element
         creater.createHeader();
         //Create tbody element
-        creater.createBody(i);
+        creater.createBody();
     }
 }
 

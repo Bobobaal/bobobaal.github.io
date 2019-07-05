@@ -104,8 +104,10 @@ class TableCreater {
     }
 
     createBody() {
+        //Gives the collapse the correct color depending if I've seen all episodes in that collapse, not all of them or if I have seen none
         this.colorCollapse();
 
+        //Fills the table with all the episodes
         this.fillTable();
 
         //Append tbody to the table when all tr's of the current collapse has been made and appended

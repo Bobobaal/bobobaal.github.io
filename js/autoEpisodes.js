@@ -1,3 +1,4 @@
+/* jshint -W078 */
 class Episode {
     constructor(showTitle, season, eNr, eTitle, seen) {
         this.showTitle = showTitle;

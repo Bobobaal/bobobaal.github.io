@@ -113,6 +113,13 @@ class TableCreater {
         //Append tbody to the table when all tr's of the current collapse has been made and appended
         this._table.appendChild(this._tbody);
 
+        if (this._iterator === 7) {
+            const h3 = document.createElement("h3");
+            const h3Text = document.createTextNode("Last season arrow already in the collapse because the number of episodes is already known");
+            h3.appendChild(h3Text);
+            this._collapse.appendChild(h3);
+        }
+
         //Appends the table in the collapse
         this._collapse.appendChild(this._table);
     }

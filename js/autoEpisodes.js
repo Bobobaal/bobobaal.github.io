@@ -542,7 +542,7 @@ const collapse5 = [new Episode("DC Legends Of Tommorow", 3, 1, "Aruba-Con", true
     new Episode("The Flash", 4, 23, "We Are The Flash", true)
 ];
 
-const collapse6seen = false;
+const collapse6seen = true;
 const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("The Flash", 5, 2, "Blocked", true),
     new Episode("The Flash", 5, 3, "The Death Of Vibe", true),
@@ -620,11 +620,11 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
     new Episode("The Flash", 5, 20, "Gone Rogue", true),
     new Episode("The Flash", 5, 21, "The Girl With The Red Lightning", true),
     new Episode("The Flash", 5, 22, "Legacy", true),
-    new Episode("Arrow", 7, 18, "Lost Canary", false),
-    new Episode("Arrow", 7, 19, "Spartan", false),
-    new Episode("Arrow", 7, 20, "Confessions", false),
-    new Episode("Arrow", 7, 21, "Living Proof", false),
-    new Episode("Arrow", 7, 22, "You Have Saved This City", false)
+    new Episode("Arrow", 7, 18, "Lost Canary", true),
+    new Episode("Arrow", 7, 19, "Spartan", true),
+    new Episode("Arrow", 7, 20, "Confessions", true),
+    new Episode("Arrow", 7, 21, "Living Proof", true),
+    new Episode("Arrow", 7, 22, "You Have Saved This City", true)
 ];
 
 const collapse7seen = false;

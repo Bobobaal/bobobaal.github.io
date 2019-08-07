@@ -628,9 +628,9 @@ const collapse6 = [new Episode("The Flash", 5, 1, "Nora", true),
 ];
 
 const collapse7seen = false;
-const collapse7 = [new Episode("Arrow", 8, 1, "N/A", false),
-    new Episode("Arrow", 8, 2, "N/A", false),
-    new Episode("Arrow", 8, 3, "N/A", false),
+const collapse7 = [new Episode("Arrow", 8, 1, "Starling City", false),
+    new Episode("Arrow", 8, 2, "Welcome To Hong Kong", false),
+    new Episode("Arrow", 8, 3, "Leap Of Faith", false),
     new Episode("Arrow", 8, 4, "N/A", false),
     new Episode("Arrow", 8, 5, "N/A", false),
     new Episode("Arrow", 8, 6, "N/A", false),

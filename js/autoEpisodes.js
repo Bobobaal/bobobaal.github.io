@@ -631,13 +631,21 @@ const collapse7seen = false;
 const collapse7 = [new Episode("Arrow", 8, 1, "Starling City", false),
     new Episode("Arrow", 8, 2, "Welcome To Hong Kong", false),
     new Episode("Arrow", 8, 3, "Leap Of Faith", false),
-    new Episode("Arrow", 8, 4, "N/A", false),
+    new Episode("Arrow", 8, 4, "Present Tense", false),
     new Episode("Arrow", 8, 5, "N/A", false),
     new Episode("Arrow", 8, 6, "N/A", false),
     new Episode("Arrow", 8, 7, "N/A", false),
     new Episode("Arrow", 8, 8, "N/A", false),
     new Episode("Arrow", 8, 9, "N/A", false),
-    new Episode("Arrow", 8, 10, "N/A", false)
+    new Episode("Arrow", 8, 10, "N/A", false),
+    new Episode("Supergirl", 5, 1, "N/A", false),
+    new Episode("DC Legends Of Tomorrow", 5, 1, "Meet The Legends", false),
+    new Episode("DC Legends Of Tomorrow", 5, 2, "Miss Me, Kiss Me, Love Me", false),
+    new Episode("DC Legends Of Tomorrow", 5, 3, "Slay Anything", false),
+    new Episode("DC Legends Of Tomorrow", 5, 4, "A Head Of Her Time", false),
+    new Episode("The Flash", 6, 1, "N/A", false),
+    new Episode("The Flash", 6, 2, "A Flash Of The Lightning", false),
+    new Episode("Batwoman", 1, 1, "N/A", false)
 ];
 
 const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6, collapse7];

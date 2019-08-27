@@ -139,13 +139,15 @@ class TableCreater {
         for (let episode of collapses[this._iterator - 1]) {
             const tr = document.createElement("tr");
             if (episode.showTitle.toLowerCase() === "arrow") {
-                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen success" : "success");
+                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen arrow" : "arrow");
             } else if (episode.showTitle.toLowerCase() === "the flash") {
-                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen warning" : "warning");
+                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen flash" : "flash");
             } else if (episode.showTitle.toLowerCase() === "supergirl") {
-                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen danger" : "danger");
+                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen supergirl" : "supergirl");
+            } else if (episode.showTitle.toLowerCase() === "dc legends of tomorrow") {
+                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen legends" : "legends");
             } else {
-                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen info" : "info");
+                tr.setAttribute("class", collapsesSeen[this._iterator - 1] === false && episode.seen === true ? "seen batwoman" : "batwoman");
             }
 
             //Create all 4 td's per tr and fill them in correctly according to the thead

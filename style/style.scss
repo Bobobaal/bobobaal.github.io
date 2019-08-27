@@ -5,6 +5,48 @@
     color: $orange;
 }
 
+.batwoman {
+    background-color: #d9d9d9;
+}
+
+.arrow {
+    background-color: #dff0d8;
+}
+
+.supergirl {
+    background-color: #f2dede;
+}
+
+.flash {
+    background-color: #fcf8e3;
+}
+
+.legends {
+    background-color: #d9edf7;
+}
+
+.table-hover>tbody>tr {
+    &.arrow:hover>td {
+        background-color: #d0e9c6;
+    }
+
+    &.legends:hover>td {
+        background-color: #c4e3f3;
+    }
+
+    &.flash:hover>td {
+        background-color: #faf2cc;
+    }
+
+    &.supergirl:hover>td {
+        background-color: #ebcccc;
+    }
+
+    &.batwoman:hover>td {
+        background-color: #ccc;
+    }
+}
+
 p {
     margin: 0;
 }

@@ -123,13 +123,13 @@ class TableCreater {
         //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
         if (collapsesSeen[this._iterator - 1] === true) {
             this._tbody.setAttribute("class", "seen");
-            this._collapse.parentElement.setAttribute("class", "panel panel-success");
+            this._collapse.parentElement.setAttribute("class", "card arrow");
             //If not all episodes are seen but I've seen some the div to open the collapse will get the classes panel and panel-warning -> marks that I'm watching it
         } else if (collapsesSeen[this._iterator - 1] === false && collapses[this._iterator - 1].reduce((result, episode) => result || episode.seen, false)) {
-            this._collapse.parentElement.setAttribute("class", "panel panel-warning");
+            this._collapse.parentElement.setAttribute("class", "card flash");
             //Div to open the collapse will get classes panel and panel-danger when I haven't seen any episode in that collapse
         } else {
-            this._collapse.parentElement.setAttribute("class", "panel panel-danger");
+            this._collapse.parentElement.setAttribute("class", "card supergirl");
         }
     }
 
@@ -638,9 +638,10 @@ const collapse7 = [new Episode("Arrow", 8, 1, "Starling City", false),
     new Episode("DC Legends Of Tomorrow", 5, 2, "Miss Me, Kiss Me, Love Me", false),
     new Episode("DC Legends Of Tomorrow", 5, 3, "Slay Anything", false),
     new Episode("DC Legends Of Tomorrow", 5, 4, "A Head Of Her Time", false),
-    new Episode("The Flash", 6, 1, "N/A", false),
+    new Episode("DC Legends Of Tomorrow", 5, 5, "Mortal Khanbat", false),
+    new Episode("The Flash", 6, 1, "Into The Void", false),
     new Episode("The Flash", 6, 2, "A Flash Of The Lightning", false),
-    new Episode("Batwoman", 1, 1, "N/A", false)
+    new Episode("Batwoman", 1, 1, "Pilot", false)
 ];
 
 const collapses = [collapse1, collapse2, collapse3, collapse4, collapse5, collapse6, collapse7];

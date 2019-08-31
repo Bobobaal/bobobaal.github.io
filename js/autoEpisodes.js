@@ -120,14 +120,14 @@ class TableCreater {
 
     colorCollapse() {
         //If all the episodes in a single collapse are seen it will give the tbody the class seen and
-        //the div to open the collapse will get the classes panel and panel-success -> marks everything seen without opening the collapse
+        //the div to open the collapse will get the classes card and arrow (color green) -> marks everything seen without opening the collapse
         if (collapsesSeen[this._iterator - 1] === true) {
             this._tbody.setAttribute("class", "seen");
             this._collapse.parentElement.setAttribute("class", "card arrow");
-            //If not all episodes are seen but I've seen some the div to open the collapse will get the classes panel and panel-warning -> marks that I'm watching it
+            //If not all episodes are seen but I've seen some the div to open the collapse will get the classes card and flash (color yellow) -> marks that I'm watching it
         } else if (collapsesSeen[this._iterator - 1] === false && collapses[this._iterator - 1].reduce((result, episode) => result || episode.seen, false)) {
             this._collapse.parentElement.setAttribute("class", "card flash");
-            //Div to open the collapse will get classes panel and panel-danger when I haven't seen any episode in that collapse
+            //Div to open the collapse will get classes card and supergirl (color red) when I haven't seen any episode in that collapse
         } else {
             this._collapse.parentElement.setAttribute("class", "card supergirl");
         }
